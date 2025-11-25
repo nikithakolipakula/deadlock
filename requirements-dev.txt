@@ -1,0 +1,11 @@
+-r requirements.txt
+
+# Additional development tools
+ipython==8.17.2
+ipdb==0.13.13
+pytest-watch==4.2.0
+pytest-xdist==3.5.0
+
+# Documentation
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0

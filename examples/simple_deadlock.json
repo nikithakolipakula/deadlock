@@ -1,0 +1,64 @@
+{
+  "name": "Simple Two-Process Deadlock",
+  "description": "Classic deadlock scenario with two processes and two resources creating circular wait",
+  "resources": [
+    {
+      "id": "R1",
+      "units": 1
+    },
+    {
+      "id": "R2",
+      "units": 1
+    }
+  ],
+  "processes": [
+    {
+      "id": "P1",
+      "max": {
+        "R1": 1,
+        "R2": 1
+      },
+      "priority": 1
+    },
+    {
+      "id": "P2",
+      "max": {
+        "R1": 1,
+        "R2": 1
+      },
+      "priority": 2
+    }
+  ],
+  "events": [
+    {
+      "time": 0.0,
+      "type": "allocate",
+      "proc": "P1",
+      "res": "R1",
+      "units": 1
+    },
+    {
+      "time": 1.0,
+      "type": "allocate",
+      "proc": "P2",
+      "res": "R2",
+      "units": 1
+    },
+    {
+      "time": 2.0,
+      "type": "request",
+      "proc": "P1",
+      "res": "R2",
+      "units": 1
+    },
+    {
+      "time": 3.0,
+      "type": "request",
+      "proc": "P2",
+      "res": "R1",
+      "units": 1
+    }
+  ],
+  "prevention_policy": "none",
+  "recovery_policy": "none"
+}

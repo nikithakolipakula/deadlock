@@ -1,0 +1,24 @@
+{
+  "name": "Banker's Algorithm - Unsafe State",
+  "description": "Demonstrates unsafe state detection with Banker's Algorithm",
+  "resources": [
+    {"id": "R1", "units": 3},
+    {"id": "R2", "units": 2}
+  ],
+  "processes": [
+    {"id": "P1", "max": {"R1": 3, "R2": 2}, "priority": 1},
+    {"id": "P2", "max": {"R1": 2, "R2": 2}, "priority": 2},
+    {"id": "P3", "max": {"R1": 2, "R2": 1}, "priority": 3}
+  ],
+  "events": [
+    {"time": 0.0, "type": "allocate", "proc": "P1", "res": "R1", "units": 1},
+    {"time": 0.5, "type": "allocate", "proc": "P1", "res": "R2", "units": 1},
+    {"time": 1.0, "type": "allocate", "proc": "P2", "res": "R1", "units": 1},
+    {"time": 1.5, "type": "allocate", "proc": "P2", "res": "R2", "units": 1},
+    {"time": 2.0, "type": "allocate", "proc": "P3", "res": "R1", "units": 1},
+    {"time": 3.0, "type": "request", "proc": "P1", "res": "R1", "units": 1},
+    {"time": 4.0, "type": "request", "proc": "P3", "res": "R2", "units": 1}
+  ],
+  "prevention_policy": "bankers",
+  "recovery_policy": "none"
+}

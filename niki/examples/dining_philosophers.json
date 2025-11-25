@@ -1,0 +1,32 @@
+{
+  "name": "Dining Philosophers Problem",
+  "description": "Classic dining philosophers with 5 philosophers and 5 forks",
+  "resources": [
+    {"id": "Fork1", "units": 1},
+    {"id": "Fork2", "units": 1},
+    {"id": "Fork3", "units": 1},
+    {"id": "Fork4", "units": 1},
+    {"id": "Fork5", "units": 1}
+  ],
+  "processes": [
+    {"id": "Philosopher1", "max": {"Fork1": 1, "Fork2": 1}, "priority": 1},
+    {"id": "Philosopher2", "max": {"Fork2": 1, "Fork3": 1}, "priority": 2},
+    {"id": "Philosopher3", "max": {"Fork3": 1, "Fork4": 1}, "priority": 3},
+    {"id": "Philosopher4", "max": {"Fork4": 1, "Fork5": 1}, "priority": 4},
+    {"id": "Philosopher5", "max": {"Fork5": 1, "Fork1": 1}, "priority": 5}
+  ],
+  "events": [
+    {"time": 0.0, "type": "allocate", "proc": "Philosopher1", "res": "Fork1", "units": 1},
+    {"time": 0.5, "type": "allocate", "proc": "Philosopher2", "res": "Fork2", "units": 1},
+    {"time": 1.0, "type": "allocate", "proc": "Philosopher3", "res": "Fork3", "units": 1},
+    {"time": 1.5, "type": "allocate", "proc": "Philosopher4", "res": "Fork4", "units": 1},
+    {"time": 2.0, "type": "allocate", "proc": "Philosopher5", "res": "Fork5", "units": 1},
+    {"time": 3.0, "type": "request", "proc": "Philosopher1", "res": "Fork2", "units": 1},
+    {"time": 3.5, "type": "request", "proc": "Philosopher2", "res": "Fork3", "units": 1},
+    {"time": 4.0, "type": "request", "proc": "Philosopher3", "res": "Fork4", "units": 1},
+    {"time": 4.5, "type": "request", "proc": "Philosopher4", "res": "Fork5", "units": 1},
+    {"time": 5.0, "type": "request", "proc": "Philosopher5", "res": "Fork1", "units": 1}
+  ],
+  "prevention_policy": "none",
+  "recovery_policy": "preempt_low_priority"
+}

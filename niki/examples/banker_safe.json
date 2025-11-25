@@ -1,0 +1,38 @@
+{
+  "name": "Banker's Algorithm - Safe State",
+  "description": "Demonstrates safe state with Banker's Algorithm prevention",
+  "resources": [
+    {"id": "R1", "units": 10},
+    {"id": "R2", "units": 5},
+    {"id": "R3", "units": 7}
+  ],
+  "processes": [
+    {"id": "P1", "max": {"R1": 7, "R2": 5, "R3": 3}, "priority": 1},
+    {"id": "P2", "max": {"R1": 3, "R2": 2, "R3": 2}, "priority": 2},
+    {"id": "P3", "max": {"R1": 9, "R2": 0, "R3": 2}, "priority": 3},
+    {"id": "P4", "max": {"R1": 2, "R2": 2, "R3": 2}, "priority": 4},
+    {"id": "P5", "max": {"R1": 4, "R2": 3, "R3": 3}, "priority": 5}
+  ],
+  "events": [
+    {"time": 0.0, "type": "allocate", "proc": "P1", "res": "R1", "units": 0},
+    {"time": 0.1, "type": "allocate", "proc": "P1", "res": "R2", "units": 1},
+    {"time": 0.2, "type": "allocate", "proc": "P1", "res": "R3", "units": 0},
+    {"time": 1.0, "type": "allocate", "proc": "P2", "res": "R1", "units": 2},
+    {"time": 1.1, "type": "allocate", "proc": "P2", "res": "R2", "units": 0},
+    {"time": 1.2, "type": "allocate", "proc": "P2", "res": "R3", "units": 0},
+    {"time": 2.0, "type": "allocate", "proc": "P3", "res": "R1", "units": 3},
+    {"time": 2.1, "type": "allocate", "proc": "P3", "res": "R2", "units": 0},
+    {"time": 2.2, "type": "allocate", "proc": "P3", "res": "R3", "units": 2},
+    {"time": 3.0, "type": "allocate", "proc": "P4", "res": "R1", "units": 2},
+    {"time": 3.1, "type": "allocate", "proc": "P4", "res": "R2", "units": 1},
+    {"time": 3.2, "type": "allocate", "proc": "P4", "res": "R3", "units": 1},
+    {"time": 4.0, "type": "allocate", "proc": "P5", "res": "R1", "units": 0},
+    {"time": 4.1, "type": "allocate", "proc": "P5", "res": "R2", "units": 0},
+    {"time": 4.2, "type": "allocate", "proc": "P5", "res": "R3", "units": 2},
+    {"time": 5.0, "type": "request", "proc": "P2", "res": "R1", "units": 1},
+    {"time": 6.0, "type": "request", "proc": "P4", "res": "R3", "units": 1},
+    {"time": 7.0, "type": "request", "proc": "P5", "res": "R1", "units": 2}
+  ],
+  "prevention_policy": "bankers",
+  "recovery_policy": "none"
+}
